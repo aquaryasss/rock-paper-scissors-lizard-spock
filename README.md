@@ -3,15 +3,15 @@ A game of chance from The Big Bang Theory that expands the traditional game of R
 
 ### Rules 
 ---
-Scissors cuts Paper
-Paper covers Rock
-Rock crushes Lizard
-Lizard poisons Spock
-Spock smashes Scissors
-Scissors decapitates Lizard
-Lizard eats Paper
-Paper disproves Spock
-Spock vaporizes Rock
-(and as it always has) Rock crushes Scissors
+Scissors cuts Paper  
+Paper covers Rock  
+Rock crushes Lizard  
+Lizard poisons Spock  
+Spock smashes Scissors  
+Scissors decapitates Lizard  
+Lizard eats Paper  
+Paper disproves Spock  
+Spock vaporizes Rock  
+(and as it always has) Rock crushes Scissors  
 
 ![Game rules from The Big Bang Theory](images/bigbang.jpeg)
