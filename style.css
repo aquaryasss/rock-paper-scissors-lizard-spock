@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -31,7 +33,7 @@ body {
 }
 
 #screen-border {
-    background-color: #4f64aa;
+    background-color: #3f4f96;
     border: 3px solid #363747;
     padding: 20px;
     margin-top: 47px;
@@ -44,11 +46,14 @@ body {
 }
 
 #screen {
-    background-color: #8fcecb;
+    background-color: #7fc4bf;
     width: 97%;
     height: 95%;
     border-radius: 30px;
     border: 3px solid #363747;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #monitor-buttons {
@@ -73,6 +78,9 @@ body {
     width: 25px;
     height: 25px;
     border: 2px solid #363747;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
 }
 
 #button1 {
@@ -109,4 +117,72 @@ body {
     margin-right: 5px;
     border: 2px solid #363747;    
     border-radius: 3px;
+}
+
+.cloud {
+    position: absolute;
+}
+
+#cloud1 {
+    top: 18%;
+    left: 23%;
+    width: 150px;
+}
+
+#cloud2 {
+    top: 46%;
+    left: 19.45%;
+    width: 85px;
+}
+
+#cloud3 {
+    top: 18%;
+    right: 23%;
+    width: 150px;
+}
+
+#cloud4 {
+    top: 22%;
+    right: 19.45%;
+    width: 83px;
+}
+
+#dashed-box {
+    background-color: transparent;
+    border: 7px dashed #3f4f96;
+    border-radius: 20px;
+    width: 60%;
+    height: 35%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 150px;
+    color: #feabbf;
+    text-shadow:
+        9px 9px 0 #3f4f96;
+}
+
+#start-button {
+    cursor: pointer;
+    border: 5px solid #3f4f96;
+    border-radius: 20px;
+    background-color: #fdb760;
+    color: #f2ead7;
+    font-size: 50px;
+    font-family: 'Press Start 2P', sans-serif;
+    margin-top: 120px;
+    padding: 15px 35px;
+    text-shadow:
+        5px 5px 0 #3f4f96;
+    transition: all 0.3s ease;
+}
+
+#start-button:hover {
+    filter: brightness(105%);
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
 }
