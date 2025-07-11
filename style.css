@@ -199,6 +199,19 @@ justify-content: center;
     text-align: center;
 }
 
+#leonard-chosen-text, #howard-chosen-text, #raj-chosen-text {
+    width: 95%;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 70px;
+    color: #feabbf;
+    text-shadow: 9px 9px 0 #3f4f96;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 #sheldon-div {
     margin-top: 40px;
     width: 300px;
@@ -210,12 +223,12 @@ justify-content: center;
     justify-content: center;
 }
 
-#sheldon-text.fade-in, #sheldon-div.fade-in, #character-text.fade-in, .character-div.fade-in {
+#sheldon-text.fade-in, #sheldon-div.fade-in, #character-text.fade-in, .character-div.fade-in, #leonard-chosen-text.fade-in, #howard-chosen-text.fade-in, #raj-chosen-text.fade-in {
     animation: fadeIn 0.5s ease-out;
 }
 
 
-#sheldon-text.fade-out, #sheldon-div.fade-out{
+#sheldon-text.fade-out, #sheldon-div.fade-out, #leonard-chosen-text.fade-out, #howard-chosen-text.fade-out, #raj-chosen-text.fade-out {
     opacity: 0;
     transition: opacity 0.5s ease-out;
 }
@@ -247,7 +260,7 @@ justify-content: center;
 
 .character-div:hover {
     background-color: #feabbf; 
-    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 7px 8px 7px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fadeIn {

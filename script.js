@@ -41,6 +41,7 @@ function showSelectScreen() {
     characterText.id = 'character-text';
     characterText.textContent = 'Select a character.';
     characterText.classList.add('fade-in');
+    characterText.classList.add('hide-character-screen');
     screen.appendChild(characterText);
 }
 
@@ -51,12 +52,18 @@ function showCharacters() {
     const leonardIconDiv = document.createElement('div');
     const howardIconDiv = document.createElement('div');
     const rajIconDiv = document.createElement('div');
+    leonardIconDiv.id = 'leonard-div';
     leonardIconDiv.classList.add('character-div');
     leonardIconDiv.classList.add('fade-in');
+    leonardIconDiv.classList.add('hide-character-screen');
+    howardIconDiv.id = 'howard-div';
     howardIconDiv.classList.add('character-div');
     howardIconDiv.classList.add('fade-in');
+    howardIconDiv.classList.add('hide-character-screen');
+    rajIconDiv.id = 'raj-div';
     rajIconDiv.classList.add('character-div');
     rajIconDiv.classList.add('fade-in');
+    rajIconDiv.classList.add('hide-character-screen');
     charactersContainer.appendChild(leonardIconDiv);
     charactersContainer.appendChild(howardIconDiv);
     charactersContainer.appendChild(rajIconDiv);
@@ -77,6 +84,15 @@ function showCharacters() {
     rajIconDiv.appendChild(rajIcon);
 }
 
+function showLeonardChosen(){
+        characterText.remove();
+        charactersContainer.remove();
+        const leonardChosen = document.createElement('div');
+        leonardChosen.id = 'leonard-chosen-text';
+        leonardChosen.textContent = "I'm invoking the 'I Win' clause of the Roommate Agreement.";
+        screen.appendChild(leonardChosen);
+}
+
 
 const screen = document.querySelector('#screen');
 const startButton = document.querySelector('#start-button');
@@ -88,6 +104,56 @@ startButton.addEventListener('click', async () => {
     await showSheldonIntro();
     showSelectScreen();
     showCharacters();
-}); 
+    const leonardIconDiv = document.querySelector('#leonard-div');
+    const howardIconDiv = document.querySelector('#howard-div');
+    const rajIconDiv = document.querySelector('#raj-div');
+    const characterText = document.querySelector('#character-text');
+    const charactersContainer = document.querySelector('#characters-container');
+    leonardIconDiv.addEventListener('click', () => {
+        characterText.remove();
+        charactersContainer.remove();
+        const leonardChosen = document.createElement('div');
+        leonardChosen.id = 'leonard-chosen-text';
+        leonardChosen.textContent = "I'm invoking the 'I Win' clause of the Roommate Agreement.";
+        leonardChosen.classList.add('fade-in');
+        screen.appendChild(leonardChosen);
+        setTimeout(() => {
+            leonardChosen.classList.add('fade-out');
+            setTimeout(() => {
+                leonardChosen.remove();
+            }, 500);
+        }, 5000);
+    });
+    howardIconDiv.addEventListener('click', () => {
+        characterText.remove();
+        charactersContainer.remove();
+        const howardChosen = document.createElement('div');
+        howardChosen.id = 'howard-chosen-text';
+        howardChosen.textContent = "Time to show Sheldon what a Master's degree can do.";
+        howardChosen.classList.add('fade-in');
+        screen.appendChild(howardChosen);
+        setTimeout(() => {
+            howardChosen.classList.add('fade-out');
+            setTimeout(() => {
+                howardChosen.remove();
+            }, 500);
+        }, 5000);
+    });
+    rajIconDiv.addEventListener('click', () => {
+        characterText.remove();
+        charactersContainer.remove();
+        const rajChosen = document.createElement('div');
+        rajChosen.id = 'raj-chosen-text';
+        rajChosen.textContent = "Let's do this! For Cinnamon!";
+        rajChosen.classList.add('fade-in');
+        screen.appendChild(rajChosen);
+        setTimeout(() => {
+            rajChosen.classList.add('fade-out');
+            setTimeout(() => {
+                rajChosen.remove();
+            }, 500);
+        }, 5000);
+    });
 
+}); 
 
