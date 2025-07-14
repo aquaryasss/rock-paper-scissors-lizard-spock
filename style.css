@@ -263,6 +263,47 @@ body {
     box-shadow: 7px 8px 7px rgba(0, 0, 0, 0.3);
 }
 
+#name-score-container {
+    margin-bottom: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.indiv-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#player-container {
+    margin-left: 20px;
+}
+
+#computer-container {
+    margin-right: 20px;
+}
+
+.names {
+    border: 5px solid #3f4f96;
+    border-radius: 20px;
+    background-color: #fdb760;
+    color: #f2ead7;
+    font-size: 20px;
+    font-family: 'Press Start 2P', sans-serif;
+    padding: 7px 15px;
+    text-shadow: 3px 3px 0 #3f4f96;
+    margin-top: 10px;
+}
+
+.scores {
+    color: #3f4f96;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

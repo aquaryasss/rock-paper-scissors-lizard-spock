@@ -6,7 +6,7 @@ const characters = {
     },
 
     howard: {
-        name: 'howard',
+        name: 'Howard',
         iconSrc: 'images/howardicon.png',
         quote: "Time to show Sheldon what a Master's degree can do."
     },
@@ -86,32 +86,72 @@ function showSelectScreen() { // show character options for player
         characterIcon.classList.add('character');
         characterDiv.appendChild(characterIcon);
         charactersContainer.appendChild(characterDiv);
-        characterDiv.addEventListener('click', handleCharacterSelection);
+        characterDiv.addEventListener('click', async (event) => {
+            await handleCharacterSelection(event);
+            startGame();
+        })
     }
 }
 
 function handleCharacterSelection(event) {
-    const chosenCharacter = event.currentTarget.dataset.character;
-    playerCharacter = characters[chosenCharacter]; // store player's chosen character
+    return new Promise(resolve => {
+        const chosenCharacter = event.currentTarget.dataset.character;
+        playerCharacter = characters[chosenCharacter]; // store player's chosen character
 
-    // remove select screen
-    document.querySelector('#character-text').remove();
-    document.querySelector('#characters-container').remove();
+        // remove select screen
+        document.querySelector('#character-text').remove();
+        document.querySelector('#characters-container').remove();
 
-    // display chosen character's text
-    const chosenText = document.createElement('div');
-    chosenText.id = `${chosenCharacter}-chosen-text`;
-    chosenText.textContent = playerCharacter.quote;
-    chosenText.classList.add('fade-in');
-    screen.appendChild(chosenText);
-    setTimeout(() => {
-        chosenText.classList.add('fade-out');
+        // display chosen character's text
+        const chosenText = document.createElement('div');
+        chosenText.id = `${chosenCharacter}-chosen-text`;
+        chosenText.textContent = playerCharacter.quote;
+        chosenText.classList.add('fade-in');
+        screen.appendChild(chosenText);
         setTimeout(() => {
-            chosenText.remove();
-        }, 500);
-    }, 5000);
+            chosenText.classList.add('fade-out');
+            setTimeout(() => {
+                chosenText.remove();
+                resolve();
+            }, 500);
+        }, 5000);
+    });
 }
 
+function startGame(){
+    const nameScoreContainer = document.createElement('div'); // main header container  
+    nameScoreContainer.id = 'name-score-container';
+    
+    // player name and score
+    const playerContainer = document.createElement('div'); 
+    let playerName = document.createElement('div');
+    let playerScore = document.createElement('div');
+    playerContainer.classList.add('indiv-container');
+    playerContainer.id = 'player-container';
+    playerName.classList.add('names');
+    playerName.textContent = playerCharacter.name;
+    playerScore.classList.add('scores');
+    playerScore.textContent = 0;
+    playerContainer.appendChild(playerName);
+    playerContainer.appendChild(playerScore);
+
+    // computer name and score
+    const computerContainer = document.createElement('div');
+    const computerName = document.createElement('div');
+    const computerScore = document.createElement('div');
+    computerContainer.classList.add('indiv-container');
+    computerContainer.id = 'computer-container';
+    computerName.classList.add('names');
+    computerName.textContent = 'Sheldon';
+    computerScore.classList.add('scores');
+    computerScore.textContent = 0;
+    computerContainer.appendChild(computerName);
+    computerContainer.appendChild(computerScore);
+
+    nameScoreContainer.appendChild(playerContainer);
+    nameScoreContainer.appendChild(computerContainer);
+    screen.appendChild(nameScoreContainer);
+}
 const screen = document.querySelector('#screen');
 const startButton = document.querySelector('#start-button');
 const hideMainMenu = document.querySelectorAll('.hide-main-menu');
