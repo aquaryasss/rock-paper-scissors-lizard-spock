@@ -304,6 +304,53 @@ body {
     margin-top: 10px;
 }
 
+#choices-selection {
+    width: 80%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#choices-text {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 25px;
+    color: #f2ead7;
+    text-shadow: 3px 3px 0 #4f341c;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#choices-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.choice-icon {
+    font-size: 80px;
+    color: #cca46a;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-shadow:
+        4px 0 0 #4f341c, -4px 0 0 #4f341c,
+        0 4px 0 #4f341c, 0 -4px 0 #4f341c,
+        2px 2px 0 #4f341c, -2px -2px 0 #4f341c,
+        2px -2px 0 #4f341c, -2px 2px 0 #4f341c;
+}
+
+.choice-icon:hover {
+    color: #c2955c;
+    transform: translateY(-5px);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

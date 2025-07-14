@@ -18,6 +18,14 @@ const characters = {
     }
 };
 
+const gameChoices = {
+    rock: 'fa-hand-rock',
+    paper: 'fa-hand-paper',
+    scissors: 'fa-hand-scissors',
+    lizard: 'fa-hand-lizard',
+    spock: 'fa-hand-spock'
+}
+
 let playerCharacter = null;
 
 function showSheldonIntro() { // show the player will go againt sheldon (computer)
@@ -151,6 +159,25 @@ function startGame(){
     nameScoreContainer.appendChild(playerContainer);
     nameScoreContainer.appendChild(computerContainer);
     screen.appendChild(nameScoreContainer);
+
+    // player choices
+    const choicesSelection = document.createElement('div');
+    choicesSelection.id = 'choices-selection';
+    const choicesText = document.createElement('div');
+    choicesText.id = 'choices-text';
+    choicesText.textContent = 'Make your choice.';
+    choicesSelection.appendChild(choicesText);
+    const choicesContainer = document.createElement('div');
+    choicesContainer.id = 'choices-container';
+    for(const choice in gameChoices){
+        const icon = document.createElement('i');
+        icon.classList.add('fas', gameChoices[choice], 'choice-icon');
+        icon.dataset.choice = choice;
+        // add event listener to handle player's move 
+        choicesContainer.appendChild(icon);
+    }
+    choicesSelection.appendChild(choicesContainer)
+    screen.appendChild(choicesSelection);
 }
 const screen = document.querySelector('#screen');
 const startButton = document.querySelector('#start-button');
