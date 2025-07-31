@@ -4,10 +4,6 @@ This is a web-based implementation of the classic game "Rock, Paper, Scissors, L
 
 Players choose one of three characters (Leonard, Howard, or Raj) to face off in a battle of wits against the formidable Sheldon Cooper.
 
-### **Live Demo**
-
-[Rock, Paper, Scissors, Lizard, Spock](https://aquaryasss.github.io/rock-paper-scissors-lizard-spock/)
-
 ### **Features**
 
 - Classic RPSLS Rules: "Scissors cuts paper, paper covers rock, rock crushes lizard, lizard poisons Spock, Spock smashes scissors, scissors decapitates lizard, lizard eats paper, paper disproves Spock, Spock vaporizes rock, and as it always has, rock crushes scissors."
