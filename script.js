@@ -160,6 +160,20 @@ function startGame(){
     nameScoreContainer.appendChild(computerContainer);
     screen.appendChild(nameScoreContainer);
 
+    // game hands 
+    const gameHandsContainer = document.createElement('div');
+    gameHandsContainer.id = 'game-hands-container';
+    const playerHand = document.createElement('i');
+    playerHand.id = 'player-hand';
+    playerHand.classList.add('fas', 'fa-hand-rock', 'game-hand', 'player-hand');
+    const computerHand = document.createElement('i');
+    computerHand.id = 'computer-hand';
+    computerHand.classList.add('fas', 'fa-hand-rock', 'game-hand', 'computer-hand');
+
+    gameHandsContainer.appendChild(playerHand);
+    gameHandsContainer.appendChild(computerHand);
+    screen.appendChild(gameHandsContainer);
+
     // player choices
     const choicesSelection = document.createElement('div');
     choicesSelection.id = 'choices-selection';
@@ -173,12 +187,49 @@ function startGame(){
         const icon = document.createElement('i');
         icon.classList.add('fas', gameChoices[choice], 'choice-icon');
         icon.dataset.choice = choice;
-        // add event listener to handle player's move 
+        icon.addEventListener('click', () => playRound(choice));
         choicesContainer.appendChild(icon);
     }
     choicesSelection.appendChild(choicesContainer)
     screen.appendChild(choicesSelection);
 }
+
+function getComputerChoice(){
+    const choices = Object.keys(gameChoices);
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
+
+function playRound(playerChoice){
+    const computerChoice = getComputerChoice();
+    const playerHand = document.querySelector('#player-hand');
+    const computerHand = document.querySelector('#computer-hand');
+    const choiceIcons = document.querySelectorAll('.choice-icon');
+
+    choiceIcons.forEach(icon => icon.classList.add('disabled'));
+
+    playerHand.classList.add('shaking');
+    computerHand.classList.add('shaking');
+
+    playerHand.addEventListener('animationend', () => {
+        playerHand.classList.remove('shaking');
+        computerHand.classList.remove('shaking');
+        playerHand.classList.remove('fa-hand-rock');
+        computerHand.classList.remove('fa-hand-rock');
+        playerHand.classList.add(gameChoices[playerChoice]);
+        computerHand.classList.add(gameChoices[computerChoice]);
+        console.log(`You chose ${playerChoice}. Sheldon chose ${computerChoice}`);
+
+        setTimeout(() => {
+            playerHand.classList.remove(gameChoices[playerChoice]);
+            computerHand.classList.remove(gameChoices[computerChoice]);
+            playerHand.classList.add('fa-hand-rock');
+            computerHand.classList.add('fa-hand-rock');
+            choiceIcons.forEach(icon => icon.classList.remove('disabled'));
+        }, 2000);
+    }, {once: true});
+}
+
 const screen = document.querySelector('#screen');
 const startButton = document.querySelector('#start-button');
 const hideMainMenu = document.querySelectorAll('.hide-main-menu');

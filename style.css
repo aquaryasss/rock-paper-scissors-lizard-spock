@@ -304,6 +304,10 @@ body {
     margin-top: 10px;
 }
 
+.fa-hand-scissors, .fa-hand-lizard {
+    transform: rotate(90deg);
+}
+
 #choices-selection {
     width: 80%;
     margin-top: auto;
@@ -351,6 +355,71 @@ body {
     transform: translateY(-5px);
 }
 
+.fa-hand-scissors:hover,
+.fa-hand-lizard:hover {
+    color: #c2955c;
+    transform: rotate(90deg) translateX(-5px);
+}
+
+#game-hands-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.game-hand {
+    font-size: 280px;
+    color: #cca46a;
+    text-shadow:
+        8px 0 0 #4f341c, -8px 0 0 #4f341c,
+        0 8px 0 #4f341c, 0 -8px 0 #4f341c,
+        4px 4px 0 #4f341c, -4px -4px 0 #4f341c,
+        4px -4px 0 #4f341c, -4px 4px 0 #4f341c;
+}
+
+.player-hand {
+    transform: rotate(90deg);
+}
+
+.computer-hand {
+    transform: scaleY(-1) rotate(-90deg);
+}
+
+.shaking {
+    animation: shake 0.5s ease-in-out 3;
+}
+
+.computer-hand.shaking {
+    animation-name: shake-computer;
+}
+
+.displayed {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.player-hand.fa-hand-scissors,
+.player-hand.fa-hand-lizard {
+    transform: scaleY(-1) rotate(180deg);
+}
+
+.computer-hand.fa-hand-scissors,
+.computer-hand.fa-hand-lizard {
+    transform: scaleY(-1) scaleX(-1) rotate(180deg);
+}
+
+.player-hand.fa-hand-scissors.shaking,
+.player-hand.fa-hand-lizard.shaking {
+    animation-name: shake-scissors-player;
+}
+
+.computer-hand.fa-hand-scissors.shaking,
+.computer-hand.fa-hand-lizard.shaking {
+    animation-name: shake-scissors-computer;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -361,4 +430,40 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateY(0) rotate(90deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(90deg);
+    }
+    100% {
+        transform: translateY(0) rotate(90deg);
+    }
+}
+
+@keyframes shake-computer {
+    0% {
+        transform: translateY(0) scaleY(-1) rotate(-90deg);
+    }
+    50% {
+        transform: translateY(-30px) scaleY(-1) rotate(-90deg);
+    }
+    100% {
+        transform: translateY(0) scaleY(-1) rotate(-90deg);
+    }
+}
+
+@keyframes shake-scissors-player {
+    0% { transform: translateY(0) rotate(180deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(180deg); }
+}
+
+@keyframes shake-scissors-computer {
+    0% { transform: translateY(0) scaleX(-1) rotate(180deg); }
+    50% { transform: translateY(-30px) scaleX(-1) rotate(180deg); }
+    100% { transform: translateY(0) scaleX(-1) rotate(180deg); }
 }
