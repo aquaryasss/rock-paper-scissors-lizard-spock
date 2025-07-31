@@ -27,6 +27,8 @@ const gameChoices = {
 }
 
 let playerCharacter = null;
+let playerRoundScore = 0;
+let computerRoundScore = 0;
 
 function showSheldonIntro() { // show the player will go againt sheldon (computer)
     return new Promise(resolve => {
@@ -133,28 +135,30 @@ function startGame(){
     // player name and score
     const playerContainer = document.createElement('div'); 
     let playerName = document.createElement('div');
-    let playerScore = document.createElement('div');
+    let playerScoreEl = document.createElement('div');
     playerContainer.classList.add('indiv-container');
     playerContainer.id = 'player-container';
     playerName.classList.add('names');
     playerName.textContent = playerCharacter.name;
-    playerScore.classList.add('scores');
-    playerScore.textContent = 0;
+    playerScoreEl.classList.add('scores');
+    playerScoreEl.id = 'player-score';
+    playerScoreEl.textContent = 0;
     playerContainer.appendChild(playerName);
-    playerContainer.appendChild(playerScore);
+    playerContainer.appendChild(playerScoreEl);
 
     // computer name and score
     const computerContainer = document.createElement('div');
     const computerName = document.createElement('div');
-    const computerScore = document.createElement('div');
+    const computerScoreEl = document.createElement('div');
     computerContainer.classList.add('indiv-container');
     computerContainer.id = 'computer-container';
     computerName.classList.add('names');
     computerName.textContent = 'Sheldon';
-    computerScore.classList.add('scores');
-    computerScore.textContent = 0;
+    computerScoreEl.classList.add('scores');
+    computerScoreEl.id = 'computer-score';
+    computerScoreEl.textContent = 0;
     computerContainer.appendChild(computerName);
-    computerContainer.appendChild(computerScore);
+    computerContainer.appendChild(computerScoreEl);
 
     nameScoreContainer.appendChild(playerContainer);
     nameScoreContainer.appendChild(computerContainer);
@@ -218,7 +222,26 @@ function playRound(playerChoice){
         computerHand.classList.remove('fa-hand-rock');
         playerHand.classList.add(gameChoices[playerChoice]);
         computerHand.classList.add(gameChoices[computerChoice]);
-        console.log(`You chose ${playerChoice}. Sheldon chose ${computerChoice}`);
+        // console.log(`You chose ${playerChoice}. Sheldon chose ${computerChoice}`);
+
+        if((playerChoice == "scissors" && computerChoice == "paper") || (playerChoice == "scissors" && computerChoice == "lizard") ||
+        (playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "paper" && computerChoice == "spock") ||
+        (playerChoice == "rock" && computerChoice == "scissors") || (playerChoice == "rock" && computerChoice == "lizard") ||
+        (playerChoice == "lizard" && computerChoice == "spock") || (playerChoice == "lizard" && computerChoice == "paper") ||
+        (playerChoice == "spock" && computerChoice == "scissors") || (playerChoice == "spock" && computerChoice == "rock")
+    ){
+        playerRoundScore++;
+    }
+
+    if((computerChoice == "scissors" && playerChoice == "paper") || (computerChoice == "scissors" && playerChoice == "lizard") ||
+        (computerChoice == "paper" && playerChoice == "rock") || (computerChoice == "paper" && playerChoice == "spock") ||
+        (computerChoice == "rock" && playerChoice == "scissors") || (computerChoice == "rock" && playerChoice == "lizard") ||
+        (computerChoice == "lizard" && playerChoice == "spock") || (computerChoice == "lizard" && playerChoice == "paper") ||
+        (computerChoice == "spock" && playerChoice == "scissors") || (computerChoice == "spock" && playerChoice == "rock")
+    ){
+        computerRoundScore++;
+    }
+        updateScores();
 
         setTimeout(() => {
             playerHand.classList.remove(gameChoices[playerChoice]);
@@ -228,6 +251,13 @@ function playRound(playerChoice){
             choiceIcons.forEach(icon => icon.classList.remove('disabled'));
         }, 2000);
     }, {once: true});
+}
+
+function updateScores(){
+    const playerScoreDisplay = document.querySelector('#player-score');
+    const computerScoreDisplay = document.querySelector('#computer-score');
+    playerScoreDisplay.textContent = playerRoundScore;
+    computerScoreDisplay.textContent = computerRoundScore;
 }
 
 const screen = document.querySelector('#screen');
