@@ -25,9 +25,8 @@ body {
     border: 3px solid #363747;
     padding: 20px;
     border-radius: 50px;
-    width: 90vw;
-    max-width: 1200px;
-    aspect-ratio: 70 / 85;
+    width: 70vw;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
