@@ -27,7 +27,6 @@ Players choose one of three characters (Leonard, Howard, or Raj) to face off in 
 ### **How to Run Locally**
 
 1. Clone the repository:
-```sh
 ```sh 
     git clone https://github.com/aquaryasss/rock-paper-scissors-lizard-spock.git
 ```  
