@@ -164,6 +164,10 @@ function startGame(){
     nameScoreContainer.appendChild(computerContainer);
     screen.appendChild(nameScoreContainer);
 
+    // round text
+    const roundText = document.createElement('div');
+    roundText.id = 'round-text';
+
     // game hands 
     const gameHandsContainer = document.createElement('div');
     gameHandsContainer.id = 'game-hands-container';
@@ -176,6 +180,7 @@ function startGame(){
 
     gameHandsContainer.appendChild(playerHand);
     gameHandsContainer.appendChild(computerHand);
+    screen.appendChild(roundText);
     screen.appendChild(gameHandsContainer);
 
     // player choices
@@ -209,6 +214,8 @@ function playRound(playerChoice){
     const playerHand = document.querySelector('#player-hand');
     const computerHand = document.querySelector('#computer-hand');
     const choiceIcons = document.querySelectorAll('.choice-icon');
+    let roundText = document.querySelector('#round-text');
+    roundText.textContent = '';
 
     choiceIcons.forEach(icon => icon.classList.add('disabled'));
 
@@ -222,7 +229,8 @@ function playRound(playerChoice){
         computerHand.classList.remove('fa-hand-rock');
         playerHand.classList.add(gameChoices[playerChoice]);
         computerHand.classList.add(gameChoices[computerChoice]);
-        // console.log(`You chose ${playerChoice}. Sheldon chose ${computerChoice}`);
+
+        roundText.textContent = `You chose ${playerChoice}. Sheldon chose ${computerChoice}.`;
 
         if((playerChoice == "scissors" && computerChoice == "paper") || (playerChoice == "scissors" && computerChoice == "lizard") ||
         (playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "paper" && computerChoice == "spock") ||
@@ -249,6 +257,7 @@ function playRound(playerChoice){
             playerHand.classList.add('fa-hand-rock');
             computerHand.classList.add('fa-hand-rock');
             choiceIcons.forEach(icon => icon.classList.remove('disabled'));
+            roundText.textContent = '';
         }, 2000);
     }, {once: true});
 }
@@ -256,8 +265,26 @@ function playRound(playerChoice){
 function updateScores(){
     const playerScoreDisplay = document.querySelector('#player-score');
     const computerScoreDisplay = document.querySelector('#computer-score');
+    const nameScoreContainer = document.querySelector('#name-score-container');
+    const roundText = document.querySelector('#round-text');
+    const gameHandsContainer = document.querySelector('#game-hands-container');
+    const choicesSelection = document.querySelector('#choices-selection');
+    let gameOverText = document.createElement('div');
+    gameOverText.id = 'game-over-text';
     playerScoreDisplay.textContent = playerRoundScore;
     computerScoreDisplay.textContent = computerRoundScore;
+    if(playerRoundScore == 5 ||computerRoundScore == 5){
+        nameScoreContainer.classList.add('hidden');
+        roundText.classList.add('hidden');
+        gameHandsContainer.classList.add('hidden');
+        choicesSelection.classList.add('hidden');
+        if(playerRoundScore == 5)
+            gameOverText.textContent = 'You win against Sheldon!';
+        if(computerRoundScore== 5)
+            gameOverText.textContent = 'Sheldon wins!'
+        screen.appendChild(gameOverText);
+
+    }
 }
 
 const screen = document.querySelector('#screen');
